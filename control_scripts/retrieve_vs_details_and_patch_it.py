@@ -30,7 +30,7 @@ if __name__ == "__main__":
         result_vs['traffic_enabled'] = 'False'
 #         print(result_vs)
         admin_session.put(path='virtualservice/' + script_parms["events"][0]["obj_uuid"], data=result_vs)
-        result_vs = admin_session.get(path='virtualservice/' + script_parms["events"][0]["obj_uuid"]).json()
+#         result_vs = admin_session.get(path='virtualservice/' + script_parms["events"][0]["obj_uuid"]).json()
 #         print(result_vs)
 
     except Exception:
