@@ -13,7 +13,8 @@ For each node, do
 
 ```sudo ctr -n=k8s.io image import ako_1.9.1-5466-sctp.tar.gz```
 
-```capv@tkg-cluster-workload-1-md-0-788b5cdfb7-g2llk:~$ sudo crictl images
+```
+sudo crictl images
 IMAGE                                                                                         TAG                    IMAGE ID            SIZE
 docker.io/tacobayle/sctp_server                                                               latest                 6a6ff9efa8b25       215MB
 projects.registry.vmware.com/tkg/antrea-advanced-debian                                       <none>                 14124acaf3c32       307MB
