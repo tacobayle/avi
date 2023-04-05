@@ -1,0 +1,4 @@
+- host rule crd: https://github.com/vmware/load-balancer-and-ingress-services-for-kubernetes/blob/master/docs/crds/hostrule.md
+- GSLBConfig: https://github.com/vmware/global-load-balancing-services-for-kubernetes/blob/master/docs/crds/gslbconfig.md
+- local, Global FQDN: https://github.com/vmware/global-load-balancing-services-for-kubernetes/blob/master/docs/local_and_global_fqdn.md#when-to-use-custom-global-fqdn-mode
+- gdp: https://github.com/vmware/global-load-balancing-services-for-kubernetes/blob/master/docs/crds/gdp.md
