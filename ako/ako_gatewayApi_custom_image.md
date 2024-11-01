@@ -59,25 +59,44 @@ df9b9ec6ef4b: Pushed
 1.12.1: digest: sha256:d4e507b4f27a97ab83628ea858fa22f869f97541dd478d40bbfaf96bd0721dc9 size: 953
 root@ubuntuguest:/home/ubuntu/compose/gateway-t1lr#
 
-ubuntu@nic-vsphere-nsx-avi-gw:~$ mkdir tmp
+ubuntu@nic-vsphere-nsx-avi-gw:~$ cd ~/avi/ 
 ubuntu@nic-vsphere-nsx-avi-gw:~$
 ubuntu@nic-vsphere-nsx-avi-gw:~$
-ubuntu@nic-vsphere-nsx-avi-gw:~$ cd tmp
-ubuntu@nic-vsphere-nsx-avi-gw:~/tmp$
-ubuntu@nic-vsphere-nsx-avi-gw:~/tmp$ git clone https://github.com/vmware/load-balancer-and-ingress-services-for-kubernetes
-Cloning into 'load-balancer-and-ingress-services-for-kubernetes'...
-remote: Enumerating objects: 48970, done.
-remote: Counting objects: 100% (2666/2666), done.
-remote: Compressing objects: 100% (1279/1279), done.
-remote: Total 48970 (delta 1696), reused 2057 (delta 1293), pack-reused 46304 (from 1)
-Receiving objects: 100% (48970/48970), 66.96 MiB | 24.09 MiB/s, done.
-Resolving deltas: 100% (33043/33043), done.
-ubuntu@nic-vsphere-nsx-avi-gw:~/tmp$
-ubuntu@nic-vsphere-nsx-avi-gw:~/tmp$ cd load-balancer-and-ingress-services-for-kubernetes
-ubuntu@nic-vsphere-nsx-avi-gw:~/tmp/load-balancer-and-ingress-services-for-kubernetes$cd helm/
-ubuntu@nic-vsphere-nsx-avi-gw:~/tmp/load-balancer-and-ingress-services-for-kubernetes/helm$
+ubuntu@nic-vsphere-nsx-avi-gw:~/avi$ tar -xvf gateway-t1lr.tar.gz
+gateway-t1lr/
+gateway-t1lr/ako-gateway-api-t1lr.tar.gz
+gateway-t1lr/ako/
+gateway-t1lr/ako/crds/
+gateway-t1lr/ako/crds/ako.vmware.com_multiclusteringresses.yaml
+gateway-t1lr/ako/crds/networking.x-k8s.io_gatewayclasses.yaml
+gateway-t1lr/ako/crds/ako.vmware.com_ssorules.yaml
+gateway-t1lr/ako/crds/ako.vmware.com_clustersets.yaml
+gateway-t1lr/ako/crds/ako_vmware.com_l7rules.yaml
+gateway-t1lr/ako/crds/ako.vmware.com_httprules.yaml
+gateway-t1lr/ako/crds/ako.vmware.com_aviinfrasettings.yaml
+gateway-t1lr/ako/crds/networking.x-k8s.io_gateways.yaml
+gateway-t1lr/ako/crds/ako.vmware.com_serviceimports.yaml
+gateway-t1lr/ako/crds/ako.vmware.com_hostrules.yaml
+gateway-t1lr/ako/crds/ako.vmware.com_l4rules.yaml
+gateway-t1lr/ako/Chart.yaml
+gateway-t1lr/ako/templates/
+gateway-t1lr/ako/templates/psppolicy.yaml
+gateway-t1lr/ako/templates/gatewayclass.yaml
+gateway-t1lr/ako/templates/clusterrole.yaml
+gateway-t1lr/ako/templates/ingressclass.yaml
+gateway-t1lr/ako/templates/secret.yaml
+gateway-t1lr/ako/templates/_helpers.tpl
+gateway-t1lr/ako/templates/configmap.yaml
+gateway-t1lr/ako/templates/clusterrolebinding.yaml
+gateway-t1lr/ako/templates/statefulset.yaml
+gateway-t1lr/ako/templates/serviceaccount.yaml
+gateway-t1lr/ako/templates/NOTES.txt
+gateway-t1lr/ako/values.yaml
+ubuntu@nic-vsphere-nsx-avi-gw:~/avi$ cd gateway-t1lr/ako/
+ubuntu@nic-vsphere-nsx-avi-gw:~/avi/gateway-t1lr/ako$
+ubuntu@nic-vsphere-nsx-avi-gw:~/avi/gateway-t1lr/ako$
 
-ubuntu@nic-vsphere-nsx-avi-gw:~/tmp/load-balancer-and-ingress-services-for-kubernetes/helm/ako$ more Chart.yaml
+ubuntu@nic-vsphere-nsx-avi-gw:~/avi/gateway-t1lr/ako$ more Chart.yaml
 apiVersion: v2
 name: ako
 description: A Helm chart for Kubernetes
@@ -107,7 +126,7 @@ ubuntu@nic-vsphere-nsx-avi-gw:~/tmp/load-balancer-and-ingress-services-for-kuber
 
 
 
-ubuntu@nic-vsphere-nsx-avi-gw:~/tmp/load-balancer-and-ingress-services-for-kubernetes/helm/ako$ more /home/ubuntu/tkc/ako_ns2-cluster-1-tenant_values.yml
+ubuntu@nic-vsphere-nsx-avi-gw:~/avi/gateway-t1lr/ako$ more /home/ubuntu/tkc/ako_ns2-cluster-1-tenant_values.yml
 # Default values for ako.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
@@ -239,51 +258,54 @@ avicredentials:
 persistentVolumeClaim: ''
 mountPath: /log
 logFile: avi.log
-ubuntu@nic-vsphere-nsx-avi-gw:~/tmp/load-balancer-and-ingress-services-for-kubernetes/helm/ako$
 
-
-
-ubuntu@nic-vsphere-nsx-avi-gw:~/tmp/load-balancer-and-ingress-services-for-kubernetes/helm/ako$
-ubuntu@nic-vsphere-nsx-avi-gw:~/tmp/load-balancer-and-ingress-services-for-kubernetes/helm/ako$ helm install --generate-name oci://projects.registry.vmware.com/ako/helm-charts/ako --version 1.12.1 -f /home/ubuntu/tkc/ako_ns2-cluster-1-tenant_values.yml --namespace=avi-system
-Pulled: projects.registry.vmware.com/ako/helm-charts/ako:1.12.1
-Digest: sha256:0326640309f4c0d6797b9cebbb5377accc794e2dfa8fc5060a018f2af63466d4
-NAME: ako-1730443928
-LAST DEPLOYED: Fri Nov  1 06:52:11 2024
+ubuntu@nic-vsphere-nsx-avi-gw:~/avi/gateway-t1lr/ako$ cd ..
+ubuntu@nic-vsphere-nsx-avi-gw:~/avi/gateway-t1lr$
+ubuntu@nic-vsphere-nsx-avi-gw:~/avi/gateway-t1lr$
+ubuntu@nic-vsphere-nsx-avi-gw:~/avi/gateway-t1lr$ helm install ./ako --generate-name -f /home/ubuntu/tkc/ako_ns2-cluster-1-tenant_values.yml --namespace=avi-system
+NAME: ako-1730447759
+LAST DEPLOYED: Fri Nov  1 07:56:00 2024
 NAMESPACE: avi-system
 STATUS: deployed
 REVISION: 1
 TEST SUITE: None
-ubuntu@nic-vsphere-nsx-avi-gw:~/tmp/load-balancer-and-ingress-services-for-kubernetes/helm/ako$
-ubuntu@nic-vsphere-nsx-avi-gw:~/tmp/load-balancer-and-ingress-services-for-kubernetes/helm/ako$
-
-ubuntu@nic-vsphere-nsx-avi-gw:~/tmp/load-balancer-and-ingress-services-for-kubernetes/helm/ako$
-ubuntu@nic-vsphere-nsx-avi-gw:~/tmp/load-balancer-and-ingress-services-for-kubernetes/helm/ako$ k get pod -A
+ubuntu@nic-vsphere-nsx-avi-gw:~/avi/gateway-t1lr$
+ubuntu@nic-vsphere-nsx-avi-gw:~/avi/gateway-t1lr$
+ubuntu@nic-vsphere-nsx-avi-gw:~/avi/gateway-t1lr$ k get pod -A
 NAMESPACE                      NAME                                                                 READY   STATUS    RESTARTS      AGE
-avi-system                     ako-0                                                                2/2     Running   0             3m27s
-kube-system                    antrea-agent-qxkn5                                                   2/2     Running   0             15m
-kube-system                    antrea-agent-sd6cf                                                   2/2     Running   0             11m
-kube-system                    antrea-controller-59bfb878d-vxmkk                                    1/1     Running   0             15m
-kube-system                    coredns-7f6d9b9f99-9fvzp                                             1/1     Running   0             23m
-kube-system                    coredns-7f6d9b9f99-p9mdc                                             1/1     Running   0             23m
-kube-system                    docker-registry-ns2-cluster-1-tenant-gzbn9-9mxsr                     1/1     Running   0             23m
-kube-system                    docker-registry-ns2-cluster-1-tenant-node-pool-2-7bbjn-mq7js-xfmxz   1/1     Running   0             11m
-kube-system                    etcd-ns2-cluster-1-tenant-gzbn9-9mxsr                                1/1     Running   0             23m
-kube-system                    kube-apiserver-ns2-cluster-1-tenant-gzbn9-9mxsr                      1/1     Running   0             23m
-kube-system                    kube-controller-manager-ns2-cluster-1-tenant-gzbn9-9mxsr             1/1     Running   0             23m
-kube-system                    kube-proxy-64nsw                                                     1/1     Running   0             11m
-kube-system                    kube-proxy-fbh65                                                     1/1     Running   0             23m
-kube-system                    kube-scheduler-ns2-cluster-1-tenant-gzbn9-9mxsr                      1/1     Running   0             23m
-kube-system                    metrics-server-76b87696d8-5vmf9                                      1/1     Running   0             15m
-kube-system                    snapshot-controller-6c78fb9567-46jwj                                 1/1     Running   0             15m
-secretgen-controller           secretgen-controller-6cbbbdb547-f6dzk                                1/1     Running   0             15m
-tkg-system                     kapp-controller-b768df767-d2tsw                                      2/2     Running   0             16m
-tkg-system                     tanzu-capabilities-controller-manager-686c77c8f-xjk95                1/1     Running   0             15m
-vmware-system-auth             guest-cluster-auth-svc-4wb2m                                         1/1     Running   0             14m
-vmware-system-cloud-provider   guest-cluster-cloud-provider-565ccd495d-n72rv                        1/1     Running   0             15m
-vmware-system-csi              vsphere-csi-controller-dd99d7b4-p42dk                                7/7     Running   0             15m
-vmware-system-csi              vsphere-csi-node-drg5s                                               3/3     Running   3 (14m ago)   15m
-vmware-system-csi              vsphere-csi-node-v77wt                                               3/3     Running   0             11m
-ubuntu@nic-vsphere-nsx-avi-gw:~/tmp/load-balancer-and-ingress-services-for-kubernetes/helm/ako$
-ubuntu@nic-vsphere-nsx-avi-gw:~/tmp/load-balancer-and-ingress-services-for-kubernetes/helm/ako$
+avi-system                     ako-0                                                                2/2     Running   0             5m55s
+default                        web-front1-7cdddf9d8-tzqtd                                           1/1     Running   0             59m
+default                        web-front1-7cdddf9d8-vn7g6                                           1/1     Running   0             59m
+default                        web-front2-67c5b69974-8g85x                                          1/1     Running   0             59m
+default                        web-front2-67c5b69974-qrt8g                                          1/1     Running   0             59m
+default                        web-front3-5d566d6d8-97hwb                                           1/1     Running   0             59m
+default                        web-front3-5d566d6d8-t5r89                                           1/1     Running   0             59m
+kube-system                    antrea-agent-qxkn5                                                   2/2     Running   0             81m
+kube-system                    antrea-agent-sd6cf                                                   2/2     Running   0             78m
+kube-system                    antrea-controller-59bfb878d-vxmkk                                    1/1     Running   0             81m
+kube-system                    coredns-7f6d9b9f99-9fvzp                                             1/1     Running   0             89m
+kube-system                    coredns-7f6d9b9f99-p9mdc                                             1/1     Running   0             89m
+kube-system                    docker-registry-ns2-cluster-1-tenant-gzbn9-9mxsr                     1/1     Running   0             89m
+kube-system                    docker-registry-ns2-cluster-1-tenant-node-pool-2-7bbjn-mq7js-xfmxz   1/1     Running   0             78m
+kube-system                    etcd-ns2-cluster-1-tenant-gzbn9-9mxsr                                1/1     Running   0             89m
+kube-system                    kube-apiserver-ns2-cluster-1-tenant-gzbn9-9mxsr                      1/1     Running   0             89m
+kube-system                    kube-controller-manager-ns2-cluster-1-tenant-gzbn9-9mxsr             1/1     Running   0             89m
+kube-system                    kube-proxy-64nsw                                                     1/1     Running   0             78m
+kube-system                    kube-proxy-fbh65                                                     1/1     Running   0             89m
+kube-system                    kube-scheduler-ns2-cluster-1-tenant-gzbn9-9mxsr                      1/1     Running   0             89m
+kube-system                    metrics-server-76b87696d8-5vmf9                                      1/1     Running   0             81m
+kube-system                    snapshot-controller-6c78fb9567-46jwj                                 1/1     Running   0             82m
+secretgen-controller           secretgen-controller-6cbbbdb547-f6dzk                                1/1     Running   0             81m
+tkg-system                     kapp-controller-b768df767-d2tsw                                      2/2     Running   0             82m
+tkg-system                     tanzu-capabilities-controller-manager-686c77c8f-xjk95                1/1     Running   0             81m
+vmware-system-auth             guest-cluster-auth-svc-4wb2m                                         1/1     Running   0             81m
+vmware-system-cloud-provider   guest-cluster-cloud-provider-565ccd495d-n72rv                        1/1     Running   0             82m
+vmware-system-csi              vsphere-csi-controller-dd99d7b4-p42dk                                7/7     Running   0             82m
+vmware-system-csi              vsphere-csi-node-drg5s                                               3/3     Running   3 (81m ago)   82m
+vmware-system-csi              vsphere-csi-node-v77wt                                               3/3     Running   0             78m
+ubuntu@nic-vsphere-nsx-avi-gw:~/avi/gateway-t1lr$
+ubuntu@nic-vsphere-nsx-avi-gw:~/avi/gateway-t1lr$
+ubuntu@nic-vsphere-nsx-avi-gw:~/avi/gateway-t1lr$
+
 ```
 
