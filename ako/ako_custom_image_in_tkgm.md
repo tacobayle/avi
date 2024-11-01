@@ -66,7 +66,7 @@ version: 0.1.0
 appVersion: 1.9.1-5466
 ```
 
-edit ako/Chart.yaml like the following:
+edit values.yml like the following:
 
 ```
 # Default values for ako.
