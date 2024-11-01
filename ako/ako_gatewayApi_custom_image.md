@@ -1,4 +1,5 @@
-```root@ubuntuguest:/home/ubuntu/compose# tar -xvf gateway-t1lr.tar.gz
+```
+root@ubuntuguest:/home/ubuntu/compose# tar -xvf gateway-t1lr.tar.gz
 gateway-t1lr/
 gateway-t1lr/ako-gateway-api-t1lr.tar.gz
 gateway-t1lr/ako/
@@ -284,8 +285,5 @@ vmware-system-csi              vsphere-csi-node-drg5s                           
 vmware-system-csi              vsphere-csi-node-v77wt                                               3/3     Running   0             11m
 ubuntu@nic-vsphere-nsx-avi-gw:~/tmp/load-balancer-and-ingress-services-for-kubernetes/helm/ako$
 ubuntu@nic-vsphere-nsx-avi-gw:~/tmp/load-balancer-and-ingress-services-for-kubernetes/helm/ako$
-
-
-
 ```
 
